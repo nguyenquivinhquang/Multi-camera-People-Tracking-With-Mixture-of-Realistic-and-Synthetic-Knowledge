@@ -1,0 +1,5 @@
+DATASETS:
+  ROOT_DIR: /mnt/Data/dataset/ReiD/
+  TRAIN_FILE: 'datasets/reid/train_set_reid.txt'
+  GALLERY: 'datasets/reid/gallery_set_reid.txt'
+  QUERY: 'datasets/reid/query_set_reid.txt'

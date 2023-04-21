@@ -1,0 +1,119 @@
+MODEL:
+  PRETRAIN_CHOICE: 'imagenet'
+  PRETRAIN_PATH: '/mnt/ssd8tb/quang/pretrain/hrnetv2_w32_imagenet_pretrained.pth'
+  PRETRAIN_NAME: 'hrnetv2_w32_imagenet_pretrained.pth'
+  METRIC_LOSS_TYPE: 'triplet'
+  IF_LABELSMOOTH: 'off'
+  IF_WITH_CENTER: 'no'
+
+  NAME: 'cls_hrnet_w32'
+  NO_MARGIN: True
+  EXTRA:
+    STAGE1:
+      NUM_MODULES: 1
+      NUM_RANCHES: 1
+      BLOCK: BOTTLENECK
+      NUM_BLOCKS:
+      - 4
+      NUM_CHANNELS:
+      - 64
+      FUSE_METHOD: SUM
+    STAGE2:
+      NUM_MODULES: 1
+      NUM_BRANCHES: 2
+      BLOCK: BASIC
+      NUM_BLOCKS:
+      - 4
+      - 4
+      NUM_CHANNELS:
+      - 32
+      - 64
+      FUSE_METHOD: SUM
+    STAGE3:
+      NUM_MODULES: 4
+      NUM_BRANCHES: 3
+      BLOCK: BASIC
+      NUM_BLOCKS:
+      - 4
+      - 4
+      - 4
+      NUM_CHANNELS:
+      - 32
+      - 64
+      - 128
+      FUSE_METHOD: SUM
+    STAGE4:
+      NUM_MODULES: 3
+      NUM_BRANCHES: 4
+      BLOCK: BASIC
+      NUM_BLOCKS:
+      - 4
+      - 4
+      - 4
+      - 4
+      NUM_CHANNELS:
+      - 32
+      - 64
+      - 128
+      - 256
+      FUSE_METHOD: SUM
+
+
+
+
+INPUT:
+  # SIZE_TRAIN: [224, 224]
+  SIZE_TEST: [256, 128]
+  SIZE_TRAIN: [256, 128]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.0 # random erasing
+  PADDING: 10
+  PIXEL_MEAN: [0.5, 0.5, 0.5]
+  PIXEL_STD: [0.5, 0.5, 0.5]
+  
+DATASETS:
+  NAMES: 'veri'
+  ROOT_DIR: /mnt/Data/dataset/ReiD/
+  # ROOT_DIR: /mnt/ssd8tb/quang/
+
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+  NUM_INSTANCE: 4
+  NUM_WORKERS: 8
+
+SOLVER:
+  OPTIMIZER_NAME: 'SGD'
+  MAX_EPOCHS: 8
+  # BASE_LR: 0.01
+  BASE_LR: 0.0001
+  IMS_PER_BATCH: 64
+  STEPS: [2, 3]
+  GAMMA: 0.
+  WARMUP_FACTOR: 0.01
+  WARMUP_EPOCHS: 5
+  LARGE_FC_LR: False
+  CHECKPOINT_PERIOD: 1
+  LOG_PERIOD: 1
+  WEIGHT_DECAY:  1e-4
+  WEIGHT_DECAY_BIAS: 1e-4
+  BIAS_LR_FACTOR: 2
+  FP16_ENABLED: True
+  WARMUP_METHOD: CosineAnnealing
+  SEED: 507
+  IMS_PER_BATCH: 16
+  EVAL_PERIOD: 4
+  IMS_PER_BATCH: 96
+  EVAL_PERIOD: 1
+
+TEST:
+  IMS_PER_BATCH: 128
+  RE_RANKING: False
+  RE_RANKING_TRACK: FALSE
+  NECK_FEAT: 'after'
+  FEAT_NORM: 'yes'
+  FLIP_FEATS: 'on'
+  EVAL: True
+  FIC: True
+
+OUTPUT_DIR: "./ouptut"
+CHECKPOINT_PATH: ""

@@ -1,0 +1,84 @@
+MODEL:
+  PRETRAIN_CHOICE: 'imagenet'
+  PRETRAIN_PATH: '/mnt/ssd8tb/quang/pretrain/jx_vit_base_p16_224-80ecf9dd.pth'
+  PRETRAIN_NAME: 'jx_vit_base_p16_224-80ecf9dd.pth'
+  METRIC_LOSS_TYPE: 'triplet'
+  IF_LABELSMOOTH: 'off'
+  IF_WITH_CENTER: 'no'
+  NAME: 'transformer_local'
+  NO_MARGIN: True
+  TRANSFORMER_TYPE: 'vit_base_patch16_224_TransReID'
+  STRIDE_SIZE: [12, 12]
+  COS_LAYER: False
+  CAMERA_EMBEDDING: False
+  VIEWPOINT_EMBEDDING: False
+  LOCAL_F: False
+  AIE_COE: 2.5
+  DROP_PATH : 0.1
+  ID_LOSS_TYPE: "N"
+
+  # Local
+  SIE_CAMERA: False
+  SIE_VIEW: False
+  SIE_COE: 3.0
+  JPM: True
+  RE_ARRANGE: True
+  SHUFFLE_GROUP: 2
+  DEVIDE_LENGTH: 4
+  SHIFT_NUM: 5
+INPUT:
+  # SIZE_TRAIN: [224, 224]
+  SIZE_TEST: [256, 128]
+  SIZE_TRAIN: [256, 128]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.0 # random erasing
+  PADDING: 10
+  PIXEL_MEAN: [0.5, 0.5, 0.5]
+  PIXEL_STD: [0.5, 0.5, 0.5]
+  
+DATASETS:
+  NAMES: 'veri'
+  ROOT_DIR: /mnt/Data/dataset/ReiD/
+  LABEL_FOLDER: 'outputs/tracking_results'
+  # ROOT_DIR: /mnt/ssd8tb/quang/
+
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+  NUM_INSTANCE: 4
+  NUM_WORKERS: 8
+
+SOLVER:
+  OPTIMIZER_NAME: 'SGD'
+  MAX_EPOCHS: 3
+  # BASE_LR: 0.01
+  BASE_LR: 0.0001
+  IMS_PER_BATCH: 64
+  STEPS: [2, 3]
+  GAMMA: 0.
+  WARMUP_FACTOR: 0.01
+  WARMUP_EPOCHS: 5
+  LARGE_FC_LR: False
+  CHECKPOINT_PERIOD: 1
+  LOG_PERIOD: 1
+  WEIGHT_DECAY:  1e-4
+  WEIGHT_DECAY_BIAS: 1e-4
+  BIAS_LR_FACTOR: 2
+  FP16_ENABLED: True
+  WARMUP_METHOD: CosineAnnealing
+  SEED: 507
+  IMS_PER_BATCH: 16
+  EVAL_PERIOD: 4
+  IMS_PER_BATCH: 96
+  EVAL_PERIOD: 1
+TEST:
+  IMS_PER_BATCH: 512
+  RE_RANKING: False
+  RE_RANKING_TRACK: FALSE
+  NECK_FEAT: 'after'
+  FEAT_NORM: 'yes'
+  FLIP_FEATS: 'on'
+  EVAL: True
+  FIC: True
+
+OUTPUT_DIR: "./ouptut"
+CHECKPOINT_PATH: "output/weight/trans_local/trans_local_epoch_3.ckpt"

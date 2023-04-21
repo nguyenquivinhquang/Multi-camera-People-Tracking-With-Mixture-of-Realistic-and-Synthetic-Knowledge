@@ -1,0 +1,1 @@
+nohup python run_aicity.py --scene S022> $(date +%F-%H-%M-%S)_tracking_S022.log 2>&1 &

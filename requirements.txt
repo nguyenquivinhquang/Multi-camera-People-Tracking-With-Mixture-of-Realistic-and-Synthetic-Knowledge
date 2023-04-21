@@ -1,0 +1,18 @@
+python-dotenv==0.20.0
+pyyaml
+tqdm==4.64.1
+opencv-python==4.6.0.66
+# scipy==1.2.0
+Pillow==8.4.0
+# torchvision==0.11.2
+nbformat
+nbconvert
+jupyter-contrib-nbextensions
+pytorch-lightning==1.9.0
+ruamel.yaml
+pyparsing
+timm
+matplotlib
+scipy
+scikit-learn==0.22.2
+shapely

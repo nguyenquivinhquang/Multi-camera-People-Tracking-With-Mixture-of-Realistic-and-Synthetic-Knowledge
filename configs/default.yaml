@@ -1,0 +1,106 @@
+INPUT:
+  # Size of the image during training
+  SIZE_TRAIN : [384, 128]
+  # Size of the image during test
+  SIZE_TEST : [384, 128]
+  # Random probability for image horizontal flip
+  PROB : 0.5
+  # Random probability for random erasing
+  RE_PROB : 0.5
+  # Values to be used for image normalization
+  PIXEL_MEAN : [0.485, 0.456, 0.406]
+  # Values to be used for image normalization
+  PIXEL_STD : [0.229, 0.224, 0.225]
+  # Value of padding size
+  PADDING : 10
+
+MODEL:
+  # Using cuda or cpu for training
+  DEVICE : "cuda"
+  # ID number of GPU
+  DEVICE_ID : '0'
+  # Name of backbone
+  NAME : 'resnet50'
+  # Last stride of backbone
+  LAST_STRIDE : 1
+  # Path to pretrained model of backbone
+  PRETRAIN_NAME : ''
+  # Use ImageNet pretrained model to initialize backbone or use self trained model to initialize the whole model
+  # Options: 'imagenet' or 'self'
+  PRETRAIN_CHOICE : 'imagenet'
+  # If train with BNNeck, options: 'bnneck' or 'no'
+  NECK : 'bnneck'
+  # If train loss include center loss, options: 'yes' or 'no'. Loss with center loss has different optimizer configuration
+  IF_WITH_CENTER : 'no'
+  # The loss type of metric loss
+  # options:['triplet'](without center loss) or ['center','triplet_center'](with center loss)
+  METRIC_LOSS_TYPE : 'triplet'
+  # For example, if loss type is cross entropy loss + triplet loss + center loss
+  # the setting should be: METRIC_LOSS_TYPE : 'triplet_center' and IF_WITH_CENTER : 'yes'
+
+  # If train with label smooth, options: 'on', 'off'
+  IF_LABELSMOOTH : 'on'
+  TRIPLET_LOSS_WEIGHT: 1
+  ID_LOSS_WEIGHT: 1
+
+
+SOLVER:
+  # Name of optimizer
+  OPTIMIZER_NAME : "Adam"
+  # Number of max epoches
+  MAX_EPOCHS : 50
+  # Base learning rate
+  BASE_LR : 3e-4
+  # Factor of learning bias
+  BIAS_LR_FACTOR : 2
+  # Momentum
+  MOMENTUM : 0.9
+  # Margin of triplet loss
+  MARGIN : 0.3
+  # Margin of cluster ;pss
+  CLUSTER_MARGIN : 0.3
+  # Learning rate of SGD to learn the centers of center loss
+  CENTER_LR : 0.5
+  # Balanced weight of center loss
+  CENTER_LOSS_WEIGHT : 0.0005
+  # Settings of range loss
+  RANGE_K : 2
+  RANGE_MARGIN : 0.3
+  RANGE_ALPHA : 0
+  RANGE_BETA : 1
+  RANGE_LOSS_WEIGHT : 1
+
+  # Settings of weight decay
+  WEIGHT_DECAY : 0.0005
+  WEIGHT_DECAY_BIAS : 0.
+
+  # decay rate of learning rate
+  GAMMA : 0.1
+  # decay step of learning rate
+  STEPS : (30, 55)
+
+  # warm up factor
+  WARMUP_FACTOR : 1.0 / 3
+  # iterations of warm up
+  WARMUP_ITERS : 500
+  # method of warm up, option: 'constant','linear'
+  WARMUP_METHOD : "linear"
+
+  # epoch number of saving checkpoints
+  CHECKPOINT_PERIOD : 50
+  # iteration of display training log
+  LOG_PERIOD : 100
+  # epoch number of validation
+  EVAL_PERIOD : 50
+
+  # Number of images per batch
+  # This is global, so if we have 8 GPUs and IMS_PER_BATCH : 16, each GPU will
+  # see 2 images per batch
+  IMS_PER_BATCH : 64
+
+
+PRETRAIN_ROOT: ""
+
+ACCELERATOR: "gpu"
+OUTPUT_DIR: ""
+CHECKPOINT_PATH: ""

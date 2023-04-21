@@ -1,0 +1,64 @@
+MODEL:
+  PRETRAIN_CHOICE: 'imagenet'
+  # PRETRAIN_PATH: 'output/weight/resnet50-19c8e357.pth'
+  PRETRAIN_NAME: 'resnet50-19c8e357.pth'
+
+  LAST_STRIDE: 2
+  NECK: 'no'
+  METRIC_LOSS_TYPE: 'triplet'
+  IF_LABELSMOOTH: 'off'
+  IF_WITH_CENTER: 'no'
+
+
+INPUT:
+  SIZE_TRAIN: [256, 128]
+  SIZE_TEST: [256, 128]
+  # SIZE_TRAIN: [2, 4]
+  # SIZE_TEST: [2, 4] # debug only
+
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.0 # random erasing
+  PADDING: 10
+
+DATASETS:
+  NAMES: 'aic'
+  ROOT_DIR: /mnt/Data/dataset/ReiD/
+  LABEL_FOLDER: 'outputs/tracking_results'
+  # ROOT_DIR: /mnt/ssd8tb/quang/
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+  NUM_INSTANCE: 4
+  NUM_WORKERS: 8
+
+SOLVER:
+  OPTIMIZER_NAME: 'SGD'
+  MAX_EPOCHS: 530
+  # BASE_LR: 0.01
+  BASE_LR: 0.0001
+  IMS_PER_BATCH: 32
+  STEPS: [2, 3, 5, 7]
+  GAMMA: 0.
+  WARMUP_FACTOR: 0.01
+  WARMUP_EPOCHS: 1
+  LARGE_FC_LR: False
+  CHECKPOINT_PERIOD: 1
+  LOG_PERIOD: 200
+  EVAL_PERIOD: 5
+  WEIGHT_DECAY:  1e-4
+  WEIGHT_DECAY_BIAS: 1e-4
+  BIAS_LR_FACTOR: 2
+  FP16_ENABLED: True
+  WARMUP_METHOD: CosineAnnealing
+  SEED: 507
+  EVAL_PERIOD: 1
+TEST:
+  IMS_PER_BATCH: 128
+  RE_RANKING: 'no'
+  WEIGHT: "path"
+  NECK_FEAT: 'after'
+  FEAT_NORM: 'yes'
+
+OUTPUT_DIR: "./ouptut"
+# CHECKPOINT_PATH: "/mnt/Data/dataset/pretrain/epoch=6-Val_CMC@rank1=0.96987-Val_CMC@rank5=0.98135.ckpt"
+CHECKPOINT_PATH: "output/reid_weight/baseline/epoch_6-Val_mAP_0.46674-Val_CMC@rank1_0.52158-Val_CMC@rank5_0.69991.ckpt"
+

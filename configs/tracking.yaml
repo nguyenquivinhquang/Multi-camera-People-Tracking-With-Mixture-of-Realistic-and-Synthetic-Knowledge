@@ -1,0 +1,75 @@
+FEATURES_DIR: 'output/features' # The directory stores features extract from reid
+FEATURES_DIR: '/mnt/Data/dataset/ReiD/AIC23_Track1_MTMC_Tracking/outputs/Features/' # The directory stores features extract from reid
+# FEATURES_DIR: '/mnt/Data/dataset/ReiD/AIC23_Track1_MTMC_Tracking/outputs/Features/baseline_features' # The directory stores features extract from reid
+
+GT_DIR: '' # The directory stores gt extract from detection:
+
+# TRACKING_SCENES: [] # -1 validation all
+TRACKING_SCENES: ['all']
+UNIQUE_PERSONS:
+  S001:
+  # c001: actual 8
+    c001: 7 
+  # c002: actual 8
+    c002: 7
+    c003: 7
+    c004: 7
+    c005: 7
+    c006: 7
+    c007: 7
+    TOTAL: 8
+  S003:
+    c014: 8
+    c015: 8
+    c016: 8
+    c017: 8 
+    c018: 8  
+    c019: 8
+    TOTAL: 8
+  
+  S009:
+    c047: 6
+    c048: 6
+    c049: 8
+    c050: 8
+    c051: 7
+    c052: 6
+    TOTAL: 8
+
+  S014:
+    c076: 6
+    c077: 6
+    c078: 6
+    c079: 3
+    c080: 4
+    c081: 6
+    TOTAL: 6
+
+
+  S018:
+   c100: 8
+   c101: 8
+   c102: 8
+   c103: 5
+   c104: 8
+   c105: 8
+   TOTAL: 8
+  
+  S021:
+    c118: 4
+    c119: 4
+    c120: 5
+    c121: 5
+    c122: 3
+    c123: 5
+    TOTAL: 6
+
+  S022:
+    c124: 4
+    c125: 4
+    c126: 6
+    c127: 6
+    c128: 3
+    c129: 6
+    TOTAL: 6
+  
