@@ -1,0 +1,9 @@
+# YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+
+path: /mnt/ssd8tb/quang/detection # dataset root dir
+train: train/images # train images
+test: test/images # test images
+
+# Classes
+names:
+  0: person

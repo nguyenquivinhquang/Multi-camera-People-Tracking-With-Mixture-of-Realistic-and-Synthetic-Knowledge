@@ -1,0 +1,1 @@
+!python train.py --img 1280 --batch 12 --epochs 1 --data track1.yaml --weights yolov5x6.pt --cache

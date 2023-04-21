@@ -1,0 +1,1 @@
+python detect.py --source ./track1_synthetic.txt --data track1.yaml --weights ./best_track1_detection.pt --nosave --save-txt --save-conf --save-crop --conf-thres 0.6

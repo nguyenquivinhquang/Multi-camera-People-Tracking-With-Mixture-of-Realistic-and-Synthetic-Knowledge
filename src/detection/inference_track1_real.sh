@@ -1,0 +1,1 @@
+python detect.py --source ./track1_S001.txt --weights ./yolov5x6.pt --nosave --save-txt --save-conf --save-crop --conf-thres 0.6
