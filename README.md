@@ -3,7 +3,7 @@
 
 The 2nd Place Submission to The 7th NVIDIA AI City Challenge (2023) Track 1: Multi-camera people tracking
 
-<!-- \[[official results](https://www.aicitychallenge.org/2022-challenge-winners/)\] \[[paper (coming soon)]()\] \[[slides (coming soon)]()\]  -->
+ \[[paper](https://openaccess.thecvf.com/content/CVPR2023W/AICity/papers/Nguyen_Multi-Camera_People_Tracking_With_Mixture_of_Realistic_and_Synthetic_Knowledge_CVPRW_2023_paper.pdf)\]
 
 ![image](./assets/leaderboard.png)
 
