@@ -1,9 +1,8 @@
-# AIC README
 # [[CVPRW] 2023 AI City Challenge:](https://www.aicitychallenge.org/) Multi-camera People Tracking With Mixture of Realistic and Synthetic Knowledge
 
 The 2nd Place Submission to The 7th NVIDIA AI City Challenge (2023) Track 1: Multi-camera people tracking
 
- \[[paper](https://openaccess.thecvf.com/content/CVPR2023W/AICity/papers/Nguyen_Multi-Camera_People_Tracking_With_Mixture_of_Realistic_and_Synthetic_Knowledge_CVPRW_2023_paper.pdf)\]
+ \[[official results](https://www.aicitychallenge.org/2023-challenge-winners/)\] \[[paper](https://openaccess.thecvf.com/content/CVPR2023W/AICity/papers/Nguyen_Multi-Camera_People_Tracking_With_Mixture_of_Realistic_and_Synthetic_Knowledge_CVPRW_2023_paper.pdf)\]
 
 ![image](./assets/leaderboard.png)
 
