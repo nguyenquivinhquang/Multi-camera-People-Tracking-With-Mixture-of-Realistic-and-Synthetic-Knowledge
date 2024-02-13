@@ -91,8 +91,8 @@ AIC23_Track1_MTMC_Tracking/
 └──
 ```
 ## Inference
-
-For fast inference, please visit this [link](https://drive.google.com/drive/folders/1S9FZPPGOP3LHTwsjP1mvB0xNCWybicvF) and download all trained models and datasets.
+[Update new link]
+For fast inference, please visit this [new link](https://drive.google.com/drive/folders/1_STPMade1hWAbxvpAvFX0LevKMh1z_ND) and download all trained models and datasets.
 
 To save time on detection, please use the pre-detected dataset.
 
